@@ -37,6 +37,7 @@ CREATE TABLE `likes` (
                          `liked` BOOLEAN NOT NULL DEFAULT false
 );
 
+
 CREATE TABLE `comments` (
                              `comment_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                              `post_id` INT NOT NULL,
