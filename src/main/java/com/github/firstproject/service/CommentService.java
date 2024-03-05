@@ -4,7 +4,7 @@ package com.github.firstproject.service;
 import com.github.firstproject.dto.CommentDto;
 import com.github.firstproject.entity.Comment;
 import com.github.firstproject.entity.Post;
-import com.github.firstproject.respository.CommentRepository;
+import com.github.firstproject.repository.CommentRepository;
 import com.github.firstproject.respository.PostRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
