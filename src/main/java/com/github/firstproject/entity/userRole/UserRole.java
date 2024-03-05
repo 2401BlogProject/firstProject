@@ -1,7 +1,7 @@
-package com.github.firstproject.repository.userRole;
+package com.github.firstproject.entity.userRole;
 
-import com.github.firstproject.repository.roles.Role;
-import com.github.firstproject.repository.user.User;
+import com.github.firstproject.entity.roles.Role;
+import com.github.firstproject.entity.user.User;
 import jakarta.persistence.*;
 import lombok.*;
 

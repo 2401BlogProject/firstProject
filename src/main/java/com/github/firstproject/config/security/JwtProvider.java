@@ -1,6 +1,6 @@
 package com.github.firstproject.config.security;
 
-import com.github.firstproject.repository.roles.Role;
+import com.github.firstproject.entity.roles.Role;
 import io.jsonwebtoken.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;

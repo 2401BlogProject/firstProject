@@ -1,5 +1,6 @@
 package com.github.firstproject.repository.user;
 
+import com.github.firstproject.entity.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

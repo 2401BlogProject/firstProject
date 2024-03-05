@@ -1,16 +1,12 @@
-package com.github.firstproject.repository.user;
+package com.github.firstproject.entity.user;
 
-import com.github.firstproject.repository.userRole.UserRole;
+import com.github.firstproject.entity.userRole.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
 import java.util.List;
 
 @AllArgsConstructor

@@ -1,4 +1,4 @@
-package com.github.firstproject.repository.userDetails;
+package com.github.firstproject.entity.userDetails;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

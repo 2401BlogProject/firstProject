@@ -1,4 +1,4 @@
-package com.github.firstproject.repository.roles;
+package com.github.firstproject.entity.roles;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
