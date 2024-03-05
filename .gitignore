@@ -1,5 +1,5 @@
 HELP.md
-.gradle
+../../firstProject/.gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
@@ -16,6 +16,9 @@ build/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
+
+### spring ###
+.yaml
 
 ### IntelliJ IDEA ###
 .idea
