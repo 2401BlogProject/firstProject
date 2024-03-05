@@ -36,8 +36,8 @@ CREATE TABLE `likes` (
                          `post_id` INT NOT NULL,
                          `liked` BOOLEAN NOT NULL DEFAULT false
 );
-
-CREATE TABLE `commtents` (
+// 명칭 변경 : commtents -> comment
+CREATE TABLE `comment` (
                              `comment_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                              `post_id` INT NOT NULL,
                              `content` VARCHAR(255) NOT NULL,
