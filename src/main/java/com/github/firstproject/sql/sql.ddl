@@ -21,8 +21,8 @@ CREATE TABLE `roles` (
                          `name` VARCHAR(255) NOT NULL
 );
 
-INSERT INTO roles (role_id, name)
-VALUES (1, "ROLE_USER"), (2, "ROLE_ADMIN");
+INSERT INTO roles (name)
+VALUES ("ROLE_USER"), ("ROLE_ADMIN");
 
 CREATE TABLE `user_roles` (
                               `user_role_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -37,7 +37,7 @@ CREATE TABLE `likes` (
                          `liked` BOOLEAN NOT NULL DEFAULT false
 );
 
-CREATE TABLE `commtents` (
+CREATE TABLE `comments` (
                              `comment_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                              `post_id` INT NOT NULL,
                              `content` VARCHAR(255) NOT NULL,
