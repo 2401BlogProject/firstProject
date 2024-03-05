@@ -1,32 +1,48 @@
 package com.github.firstproject.service.post;
 
+import com.github.firstproject.dto.PostDTO;
 import com.github.firstproject.entity.post.PostEntity;
 import com.github.firstproject.repository.post.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PostService {
 
-    private final PostRepository postRepository;
+    final PostRepository postRepository;
 
     public PostService(PostRepository postRepository) {
         this.postRepository = postRepository;
     }
 
+
     public List<PostEntity> getAllPosts() {
         return postRepository.findAll();
     }
 
-    public Optional<PostEntity> getPostById(int postId) {
-        return postRepository.findById(postId);
+    public PostEntity getPostById(int postId) {
+        return postRepository.findById(postId).orElse(null);
     }
 
-    public PostEntity savePost(PostEntity postEntity) {
+    public PostEntity createPost(PostDTO postDTO) {
+        PostEntity postEntity = new PostEntity();
+        postEntity.setTitle(postDTO.getTitle());
+        postEntity.setContent(postDTO.getContent());
         return postRepository.save(postEntity);
+    }
+
+    public PostEntity updatePost(int postId, PostDTO postDTO) {
+        PostEntity existingPost = postRepository.findById(postId).orElse(null);
+
+        if (existingPost != null) {
+            existingPost.setTitle(postDTO.getTitle());
+            existingPost.setContent(postDTO.getContent());
+            return postRepository.save(existingPost);
+        }
+
+        return null;
     }
 
     public void deletePost(int postId) {

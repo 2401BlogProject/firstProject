@@ -4,9 +4,9 @@ import lombok.*;
 
 @Data
 @NoArgsConstructor
-public class PostDto {
+public class PostDTO {
+
+    private int postId;
     private String title;
     private String content;
-    private String author;
-    private String pwsssssss;
 }

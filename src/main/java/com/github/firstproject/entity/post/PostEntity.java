@@ -1,9 +1,7 @@
 package com.github.firstproject.entity.post;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.github.firstproject.entity.user.User;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,11 +18,17 @@ public class PostEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // 기본 키의 값을 자동으로 생성하는 전략을 설정하는 어노테이션입니다.
     // 여기서는 데이터베이스가 자동 증가(Auto Increment)되는 경우를 사용합니다.
-
+    @Column(name = "post_id")
     private int postId;
 
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "content")
     private String content;
+
+    @Column(name = "author")
     private String author;
+
 
 }
