@@ -1,5 +1,6 @@
 package com.github.firstproject.entity.user;
 
+import com.github.firstproject.entity.post.Post;
 import com.github.firstproject.entity.userRole.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,9 +25,12 @@ public class User {
     @Column(name = "email")
     private String email;
     @Column(name = "password")
-    private String passowrd;
+    private String password;
     @OneToMany(mappedBy = "user")
     private List<UserRole> userRoles;
+
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
 
 
 }
