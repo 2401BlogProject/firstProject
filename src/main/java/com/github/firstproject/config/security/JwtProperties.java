@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties("jwt")
 public class JwtProperties {
-    private String issuer;
-    private String secreteKey;
+    private String issuer = "dktmskf96@gmail.com";
+    private String secreteKey = "supercoding";
 }
