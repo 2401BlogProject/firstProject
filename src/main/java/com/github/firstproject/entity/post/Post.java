@@ -20,4 +20,8 @@ public class Post {
 
     @ManyToOne
     private User user;
+
+    public int getId() {
+        return postId;
+    }
 }

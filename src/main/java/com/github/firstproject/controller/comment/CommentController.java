@@ -3,7 +3,7 @@ package com.github.firstproject.controller.comment;
 
 import com.github.firstproject.service.comment.CommentService;
 import com.github.firstproject.dto.comment.CommentDTO;
-import com.github.firstproject.repository.comment.CommentRepository
+import com.github.firstproject.repository.comment.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,14 +42,13 @@ public class CommentController {
         CommentDTO updatedDto = commentService.update(id, dto);
         //결과 응답
         return ResponseEntity.status(HttpStatus.OK).body(updatedDto);
-        return null;
 
     }
     //    4. 댓글 삭제
     @DeleteMapping("api/comments/{comments_id}")
-    public ResponseEntity<CommentDto> delte(@PathVariable Long id){
+    public ResponseEntity<CommentDTO> delete(@PathVariable Long id){
         //서비스에 위임
-        CommentDto deletedDto = commentService.delete(id);
+        CommentDTO deletedDto = commentService.delete(id);
         //결과 응답
         return ResponseEntity.status(HttpStatus.OK).body(deletedDto);
     }

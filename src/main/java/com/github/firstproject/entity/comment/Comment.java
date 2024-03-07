@@ -19,9 +19,9 @@ import java.util.Objects;
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id; //대표키
+    private Long id; //대표키
 
-    @ManyToOne // Post 필드에 대한 매핑을 @ManyToOne으로 수정
+    @ManyToOne // Post 필드에 대한 매핑을 @ManyToOne 으로 수정
     @JoinColumn(name = "post_id") // 외래키 컬럼 지정
     private Post post;
     @Column
@@ -42,5 +42,8 @@ public class Comment {
                 dto.getAuthor(),
                 dto.getContent()
         );
+    }
+
+    public void patch(CommentDTO dto) {
     }
 }
