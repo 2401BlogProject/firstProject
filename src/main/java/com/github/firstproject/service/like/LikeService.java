@@ -37,7 +37,15 @@ public class LikeService {
     }
 
     public void offLike(Long postId, Long userId) {
-        Like like = likeRepository.findByPostAndUser(postId, userId).orElseThrow(
+        User user = userRepository.findById(userId).orElseThrow(
+                () -> new NotFoundException("user를 찾을 수 없습니다.")
+        );
+
+        Post post = postRepository.findById(postId).orElseThrow(
+                () -> new NotFoundException("post를 찾을 수 없습니다.")
+        );
+
+        Like like = likeRepository.findByPostAndUser(post, user).orElseThrow(
                 () -> new NotFoundException("좋아요를 찾을 수 없습니다.")
         );
 

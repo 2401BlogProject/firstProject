@@ -29,7 +29,7 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-    private final UserRolesRepository userRolesRepository;
+
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtProvider jwtProvider;
@@ -52,7 +52,6 @@ public class AuthService {
 
         UserRole userRole = UserRole.builder().user(newUser).role(role).build();
 
-//        userRolesRepository.save(userRole);
         userRepository.save(newUser);
         return true;
     }

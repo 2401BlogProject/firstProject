@@ -24,5 +24,7 @@ public class Like {
     @JoinColumn(name = "post_id")
     @ManyToOne
     private Post post;
+    @Column(name = "liked")
+    private boolean liked;
 
 }
