@@ -8,8 +8,10 @@ import com.github.firstproject.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PostService {
@@ -19,16 +21,26 @@ public class PostService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<Post> getAllPosts() {
-        return postRepository.findAll();
+    public List<PostDTO> getAllPosts() {
+        List<Post> posts = postRepository.findAll();
+        return posts.stream()
+                .map(Post::toDTO)
+                .collect(Collectors.toList());
     }
 
-    public List<Post> getPostsByUserEmail(String email) {
-        User user = userRepository.searchByEmail(email);
-        return user != null ? user.getPosts() : null;
+
+    public List<PostDTO> getPostsByUserEmail(String email) {
+        return Post.findByUserEmail(userRepository, email).stream()
+                .map(Post::toDTO)
+                .collect(Collectors.toList());
     }
 
     public Post createPost(PostDTO postDTO) {
+        if (postDTO.getUserId() == null) {
+            // 사용자 ID가 없는 경우에 대한 처리 또는 예외 발생
+            return null;
+        }
+
         Optional<User> userOptional = userRepository.findById(postDTO.getUserId());
 
         if (userOptional.isPresent()) {
@@ -36,6 +48,7 @@ public class PostService {
             Post post = new Post();
             post.setTitle(postDTO.getTitle());
             post.setContent(postDTO.getContent());
+            post.setAuthor(postDTO.getAuthor());
             post.setUser(user);
             return postRepository.save(post);
         } else {
@@ -45,6 +58,11 @@ public class PostService {
     }
 
     public Post updatePost(Long postId, PostDTO postDTO) {
+        if (postId == null || postDTO.getUserId() == null) {
+            // 게시물 ID 또는 사용자 ID가 없는 경우에 대한 처리 또는 예외 발생
+            return null;
+        }
+
         Optional<Post> optionalPost = postRepository.findById(postId);
 
         if (optionalPost.isPresent()) {
@@ -55,6 +73,7 @@ public class PostService {
                 Post post = optionalPost.get();
                 post.setTitle(postDTO.getTitle());
                 post.setContent(postDTO.getContent());
+                post.setAuthor(postDTO.getAuthor());
                 post.setUser(user);
                 return postRepository.save(post);
             } else {
@@ -67,7 +86,13 @@ public class PostService {
         }
     }
 
-    public void deletePost(Long postId) {
-        postRepository.deleteById(postId);
+    public boolean deletePost(Long postId) {
+        try {
+            postRepository.deleteById(postId);
+            return true; // 삭제 성공
+        } catch (Exception e) {
+            // 예외가 발생하면 삭제 실패
+            return false;
+        }
     }
 }
