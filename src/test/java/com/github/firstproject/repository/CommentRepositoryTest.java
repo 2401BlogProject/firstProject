@@ -1,5 +1,6 @@
 package com.github.firstproject.repository;
 
+import com.github.firstproject.repository.comment.CommentRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
