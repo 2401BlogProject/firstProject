@@ -58,28 +58,18 @@ public class PostService {
     }
 
     public Post updatePost(Long postId, PostDTO postDTO) {
-        if (postId == null || postDTO.getUserId() == null) {
-            // 게시물 ID 또는 사용자 ID가 없는 경우에 대한 처리 또는 예외 발생
+        if (postId == null) {
+            // 게시물 ID가 없는 경우에 대한 처리 또는 예외 발생
             return null;
         }
 
         Optional<Post> optionalPost = postRepository.findById(postId);
 
         if (optionalPost.isPresent()) {
-            Optional<User> userOptional = userRepository.findById(postDTO.getUserId());
-
-            if (userOptional.isPresent()) {
-                User user = userOptional.get();
-                Post post = optionalPost.get();
-                post.setTitle(postDTO.getTitle());
-                post.setContent(postDTO.getContent());
-                post.setAuthor(postDTO.getAuthor());
-                post.setUser(user);
-                return postRepository.save(post);
-            } else {
-                // 사용자가 존재하지 않는 경우에 대한 예외 처리 또는 메시지 반환
-                return null;
-            }
+            Post post = optionalPost.get();
+            post.setTitle(postDTO.getTitle());
+            post.setContent(postDTO.getContent());
+            return postRepository.save(post);
         } else {
             // 게시물이 존재하지 않는 경우에 대한 예외 처리 또는 메시지 반환
             return null;
