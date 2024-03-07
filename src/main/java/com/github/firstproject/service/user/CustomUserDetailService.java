@@ -26,7 +26,7 @@ public class CustomUserDetailService implements UserDetailsService {
         CustomUserDetails customUserDetails = CustomUserDetails.builder()
                 .user_id(user.getUserId())
                 .email(user.getEmail())
-                .password(user.getPassowrd())
+                .password(user.getPassword())
                 .authorities(user.getUserRoles().stream().map(UserRole::getRole).map(Role::getName).collect(Collectors.toList()))
                 .build();
 
