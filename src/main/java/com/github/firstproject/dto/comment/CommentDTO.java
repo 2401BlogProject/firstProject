@@ -12,10 +12,13 @@ import lombok.ToString;
 @Getter
 @ToString
 public class CommentDTO {
-    private int id;
-    private int postId;
+    private Long id;
+    private Long postId;
     private String author;
     private String content;
+
+    public CommentDTO(Long id, Object id1, String author, String content) {
+    }
 
     public static CommentDTO createCommentDTO(Comment comment) {
         return new CommentDTO(
