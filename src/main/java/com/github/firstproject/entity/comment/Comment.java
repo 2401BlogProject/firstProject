@@ -46,5 +46,13 @@ public class Comment {
     }
 
     public void patch(CommentDTO dto) {
+        //예외 발생
+        if (this.commentId !=dto.getId())
+            throw new IllegalArgumentException("댓글 수정 실패! 잘못된 id가 입력됐습니다.");
+        //객체 갱신
+        if(dto.getAuthor() != null) //수정할 닉네임 데이터
+            this.author = dto.getAuthor(); //내용 반영
+        if(dto.getContent() !=null) //수정할 본문데이터
+            this.content = dto.getContent();
     }
 }
