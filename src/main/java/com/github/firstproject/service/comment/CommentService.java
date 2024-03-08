@@ -1,5 +1,6 @@
 package com.github.firstproject.service.comment;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.github.firstproject.dto.comment.CommentDTO;
@@ -20,6 +21,7 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 
 @Service
+@Slf4j
 public class CommentService {
     @Autowired
     private CommentRepository commentRepository; //댓글 라파지터리 객체 주입
@@ -29,6 +31,7 @@ public class CommentService {
     public List<CommentDTO> comments(Long postId) {
         // 1. 댓글 조회
         List<Comment> comments = commentRepository.findByPostId(postId);
+        log.info("여기까지 실행");
         // 2. 엔티티 -> DTO 변환
         List<CommentDTO> dtos = new ArrayList<CommentDTO>();
         for (int i = 0; i < comments.size(); i++) {

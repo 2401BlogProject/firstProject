@@ -16,11 +16,12 @@ import java.util.Objects;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "commtents")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; //대표키
-
+    @Column(name = "comment_id")
+    private Long commentId; //대표키
     @ManyToOne // Post 필드에 대한 매핑을 @ManyToOne 으로 수정
     @JoinColumn(name = "post_id") // 외래키 컬럼 지정
     private Post post;

@@ -22,7 +22,7 @@ public class CommentDTO {
 
     public static CommentDTO createCommentDTO(Comment comment) {
         return new CommentDTO(
-                comment.getId(),
+                comment.getCommentId(),
                 comment.getPost().getId(),
                 comment.getAuthor(),
                 comment.getContent()

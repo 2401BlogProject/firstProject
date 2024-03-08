@@ -11,8 +11,11 @@ import java.util.Optional;
 
 public interface CommentRepository extends JpaRepository<Comment,Long> {
 //    @Query(value = "SELECT * FROM comment WHERE post_id = :postId", nativeQuery = true)
-    @Query("SELECT c FROM Comment c WHERE c.id = :id")
-    List<Comment> findByPostId(@Param("id")Long postId);
+//    @Query("SELECT c FROM Comment c WHERE c.id = :id")
+//    List<Comment> findByPostId(@Param("id")Long postId);
+    List<Comment> findByPostId(Long postId);
+
+    List<Comment> findAllByPostId(Long postId);
 
     //특정 작성자의 모든 댓글 조회
     List<Comment> findByAuthor(String author);
