@@ -16,7 +16,7 @@ import java.util.Objects;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "commtents")
+@Table(name = "comments")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,7 +47,7 @@ public class Comment {
 
     public void patch(CommentDTO dto) {
         //예외 발생
-        if (this.commentId !=dto.getId())
+        if (this.commentId != dto.getId())
             throw new IllegalArgumentException("댓글 수정 실패! 잘못된 id가 입력됐습니다.");
         //객체 갱신
         if(dto.getAuthor() != null) //수정할 닉네임 데이터

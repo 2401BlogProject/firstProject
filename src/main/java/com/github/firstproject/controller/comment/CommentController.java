@@ -27,7 +27,7 @@ public class CommentController {
 
     //    2. 댓글 생성
     @PostMapping("/api/comments")
-    public ResponseEntity<CommentDTO> create(@PathVariable Long postId,
+    public ResponseEntity<CommentDTO> create(
                                              @RequestBody CommentDTO dto){
         //서비스에 위임
         CommentDTO createdDto = commentService.create(dto.getPostId(), dto);
